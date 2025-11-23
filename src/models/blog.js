@@ -5,7 +5,11 @@ const blogSchema = new mongoose.Schema({
     subTitle: {type: String, required: true},
     content: {type: String, required: true},
     category: {type: String, required: true},
-    author: {type: String, required: true},
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true
+    },
     publish: {type: Boolean, default: false},
     created: {type: Date, default: Date.now}
 });
