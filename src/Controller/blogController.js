@@ -22,3 +22,13 @@ export const getBlogs = async(req, res) => {
         res.status(500).json({error: err.message});
     }
 }
+
+export const deleteBlog = async(req,res) => {
+    try {
+        const blogId = req.params.id;
+        const deletionStatus = await Blog.findByIdAndDelete(blogId);
+        res.status(204);
+    }catch(err){
+        res.status(500).json({error: err.message});
+    }
+}
