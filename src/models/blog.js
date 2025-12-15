@@ -11,6 +11,7 @@ const blogSchema = new mongoose.Schema({
         required: true
     },
     publish: {type: Boolean, default: false},
+    image: {type: String, default:null},
     created: {type: Date, default: Date.now}
 });
 
