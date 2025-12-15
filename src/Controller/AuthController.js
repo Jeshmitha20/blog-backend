@@ -32,7 +32,7 @@ export const createUser = async (req, res) => {
         }
 
         const user = new User({firstName, lastName, email, password});
-        user.save();
+        await user.save();
         console.log("User data is: ",user);
         res.status(201).json({message: "User has been created successfully", user});
     }catch(err) {
