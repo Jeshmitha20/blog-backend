@@ -52,7 +52,7 @@ export const deleteBlog = async(req,res) => {
 export const getBlogById = async(req,res) => {
     try {
         const blogId = req.params.id;
-        const blog = await Blog.findById(blogId);
+        const blog = await Blog.findById(blogId).populate("user","firstName lastName email");
         return res.status(200).json(blog);
     }catch(err) {
         return res.status(500).json({error: err.message});

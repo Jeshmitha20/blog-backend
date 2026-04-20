@@ -12,7 +12,7 @@ router.post("/auth/logout", checkIsAuthorizedUser, logout);
 router.post("/auth/createNewBlog", checkIsAuthorizedUser, upload.single("image"), createBlog);
 router.get("/auth/getBlogs/:id", checkIsAuthorizedUser, getBlogs);
 router.delete("/auth/deleteBlog/:id", checkIsAuthorizedUser, deleteBlog);
-router.get("/auth/getBlogById/:id", checkIsAuthorizedUser ,getBlogById);
+router.get("/auth/getBlogById/:id",getBlogById);
 router.get("/auth/getAllBlogs", getAllBlogs);
 
 export default router;
