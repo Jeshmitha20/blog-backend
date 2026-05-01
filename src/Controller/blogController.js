@@ -3,7 +3,6 @@ import Blog from "../models/blog.js";
 
 export const createBlog = async(req, res) => {
     try {
-        console.log("@@@@re",req.body,req.file);
         const image = req.file ? req.file.filename : null;
         const blog = new Blog({
           title: req.body.title,
@@ -28,7 +27,6 @@ export const getBlogs = async(req, res) => {
         const blogs = await Blog.find({user: userId})
                         .populate("user", "firstName lastName email")
                         .sort({ createdAt: -1 });
-        console.log("@@@@@@blogs",blogs);
         return res.status(200).json(blogs);
     }catch(err) {
         return res.status(500).json({error: err.message});
@@ -42,7 +40,6 @@ export const deleteBlog = async(req,res) => {
         if (!deletionStatus) {
             return res.status(404).json({ message: "Blog not found" });
         }
-        console.log("@@@@del")
         return res.status(204).send();
     }catch(err){
         return res.status(500).json({error: err.message});
